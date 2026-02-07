@@ -22,10 +22,7 @@
             --gray-light: #999;
             --gray-dark: #111;
             --accent: #00ff88;
-            --accent-dim: rgba(0,255,136,0.15);
-            --accent-glow: rgba(0,255,136,0.4);
-            --purple: #a855f7;
-            --blue: #3b82f6;
+            --accent-dim: rgba(0,255,136,0.1);
         }
         
         html { scroll-behavior: smooth; }
@@ -35,65 +32,29 @@
             background: var(--black);
             color: var(--white);
             line-height: 1.5;
-            overflow-x: hidden;
         }
         
         a { color: inherit; text-decoration: none; }
-        
-        /* Animated background */
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* Floating orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
-            animation: float 20s infinite ease-in-out;
-        }
-        .orb-1 { width: 400px; height: 400px; background: var(--accent-glow); top: 10%; left: -10%; animation-delay: 0s; }
-        .orb-2 { width: 300px; height: 300px; background: rgba(168,85,247,0.2); bottom: 20%; right: -5%; animation-delay: -7s; }
-        .orb-3 { width: 250px; height: 250px; background: rgba(59,130,246,0.15); top: 50%; left: 30%; animation-delay: -14s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.1); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 10px) scale(1.05); }
-        }
         
         /* Header */
         header {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            padding: 15px 24px;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10,10,10,0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 24px;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, var(--white), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 22px;
+            letter-spacing: 5px;
+            color: var(--white);
         }
         
         .nav-links { display: flex; gap: 24px; align-items: center; }
@@ -101,67 +62,47 @@
             font-size: 11px;
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: var(--gray-light);
             transition: color 0.2s;
-            position: relative;
         }
-        .nav-links a:not(.btn-book)::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-        .nav-links a:not(.btn-book):hover::after { width: 100%; }
         .nav-links a:hover { color: var(--white); }
         .nav-links .btn-book {
-            background: linear-gradient(135deg, var(--accent), #00cc6a);
+            background: var(--accent);
             color: var(--black);
-            padding: 12px 24px;
+            padding: 10px 20px;
             font-weight: 700;
-            border-radius: 4px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px var(--accent-glow);
         }
-        .nav-links .btn-book:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+        .nav-links .btn-book:hover { opacity: 0.9; }
         
         .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .hamburger span { width: 22px; height: 2px; background: var(--white); transition: 0.3s; }
+        .hamburger span { width: 22px; height: 2px; background: var(--white); }
         
         .mobile-menu {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(10,10,10,0.98);
-            backdrop-filter: blur(20px);
+            background: var(--black);
             z-index: 99;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 16px;
         }
         .mobile-menu.active { display: flex; }
         .mobile-menu a {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 40px;
-            letter-spacing: 6px;
-            transition: color 0.2s;
+            font-size: 36px;
+            letter-spacing: 4px;
         }
         .mobile-menu a:hover { color: var(--accent); }
         .mobile-close {
             position: absolute;
-            top: 20px;
+            top: 16px;
             right: 24px;
-            font-size: 36px;
+            font-size: 32px;
             cursor: pointer;
-            color: var(--gray-light);
-            transition: color 0.2s;
         }
-        .mobile-close:hover { color: var(--white); }
         
         @media (max-width: 900px) {
             .nav-links { display: none; }
@@ -174,858 +115,515 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 24px 60px;
-            position: relative;
-            z-index: 1;
+            padding: 80px 24px 40px;
         }
         
-        .hero-content { max-width: 900px; }
+        .hero-content { max-width: 800px; }
         
         .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 12px;
+            display: inline-block;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
             color: var(--accent);
-            padding: 8px 16px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(0,255,136,0.2);
-            border-radius: 30px;
-        }
-        .hero-tag::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 10px var(--accent);
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
         }
         
         .hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(80px, 18vw, 180px);
+            font-size: clamp(70px, 16vw, 160px);
             line-height: 0.85;
             letter-spacing: -2px;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gray-light) 50%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 20px;
+            color: var(--white);
         }
         
         .hero-sub {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--gray-light);
-            max-width: 550px;
-            line-height: 1.8;
-            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.7;
+            margin-bottom: 32px;
         }
         
         .hero-stats {
             display: flex;
-            gap: 50px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        .stat {
-            position: relative;
-            padding-left: 20px;
-        }
-        .stat::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-            border-radius: 2px;
+            gap: 40px;
+            margin-bottom: 32px;
         }
         .stat h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 56px;
+            font-size: 48px;
             line-height: 1;
-            background: linear-gradient(135deg, var(--accent), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
         }
         .stat p {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gray);
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 16px 32px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            border-radius: 4px;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #00cc6a);
-            color: var(--black);
-            box-shadow: 0 4px 25px var(--accent-glow);
-        }
-        .btn-primary:hover { 
-            transform: translateY(-3px) scale(1.02); 
-            box-shadow: 0 10px 40px var(--accent-glow); 
-        }
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--white);
-            background: rgba(255,255,255,0.03);
-        }
-        .btn-secondary:hover { 
-            border-color: var(--accent); 
-            color: var(--accent); 
-            background: var(--accent-dim);
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: var(--gray);
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-        .scroll-indicator::after {
-            content: '';
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+            color: var(--gray);
         }
         
-        /* Sections */
-        section { padding: 100px 24px; position: relative; z-index: 1; }
-        .section-header { margin-bottom: 50px; }
-        .section-tag {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--accent);
-            margin-bottom: 10px;
+        .hero-cta { display: flex; gap: 12px; }
+        .btn {
+            padding: 14px 28px;
+            font-size: 12px;
             font-weight: 600;
-            display: inline-block;
-            padding: 6px 12px;
-            background: var(--accent-dim);
-            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--black);
+        }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+        
+        /* Sections */
+        section { padding: 60px 24px; }
+        .section-header { margin-bottom: 32px; }
+        .section-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         .section-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(40px, 10vw, 72px);
-            letter-spacing: 3px;
+            font-size: clamp(32px, 8vw, 56px);
+            letter-spacing: 2px;
             line-height: 1;
         }
         
-        /* Listen Section */
-        .listen {
-            background: linear-gradient(180deg, var(--gray-dark) 0%, var(--black) 100%);
-        }
+        /* Listen */
+        .listen { background: var(--gray-dark); }
         .soundcloud-embed {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin-bottom: 20px;
         }
         .soundcloud-embed iframe {
             width: 100%;
             height: 166px;
             border: none;
         }
-        .listen-links {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+        .listen-links { display: flex; gap: 12px; flex-wrap: wrap; }
         .listen-link {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 24px;
+            gap: 10px;
+            padding: 12px 20px;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
             font-size: 13px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: border-color 0.2s;
         }
-        .listen-link:hover { 
-            border-color: var(--accent); 
-            background: var(--accent-dim);
-            transform: translateY(-2px);
-        }
-        .listen-link svg { width: 22px; height: 22px; }
+        .listen-link:hover { border-color: var(--accent); }
+        .listen-link svg { width: 20px; height: 20px; }
         
-        /* About Section */
+        /* About */
         .about-section { background: var(--black); }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.3fr;
-            gap: 60px;
+            gap: 40px;
             align-items: start;
         }
-        @media (max-width: 900px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+        @media (max-width: 800px) {
+            .about-grid { grid-template-columns: 1fr; gap: 24px; }
         }
-        .about-image {
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-        .about-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-dim), transparent);
-            z-index: 1;
-        }
-        .about-image img {
-            width: 100%;
-            display: block;
-            filter: grayscale(20%);
-            transition: filter 0.5s;
-        }
-        .about-image:hover img { filter: grayscale(0%); }
+        .about-image { overflow: hidden; }
+        .about-image img { width: 100%; display: block; }
         .about-content p {
-            font-size: 16px;
-            line-height: 1.9;
+            font-size: 15px;
+            line-height: 1.8;
             color: var(--gray-light);
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .about-content p:first-of-type {
-            font-size: 20px;
-            color: var(--white);
-            font-weight: 300;
-        }
-        
-        /* Experience Section */
-        .experience-section { 
-            background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%);
-        }
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-        @media (max-width: 1100px) {
-            .experience-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .experience-grid { grid-template-columns: 1fr; }
-        }
-        .experience-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s;
-        }
-        .experience-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-        .experience-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
             font-size: 18px;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
         }
-        .experience-card ul {
-            list-style: none;
-        }
-        .experience-card li {
-            font-size: 13px;
-            color: var(--gray-light);
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-            transition: color 0.2s;
-        }
-        .experience-card li:last-child { border-bottom: none; }
-        .experience-card li:hover { color: var(--white); }
         
         /* Credentials */
         .cred-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 32px;
         }
         .cred-item {
-            background: linear-gradient(135deg, var(--accent-dim), rgba(168,85,247,0.05));
-            border: 1px solid rgba(0,255,136,0.15);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s;
-        }
-        .cred-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            border-color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,255,136,0.2);
+            padding: 20px;
         }
         .cred-item h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 18px;
-            letter-spacing: 2px;
+            font-size: 16px;
+            letter-spacing: 1px;
             color: var(--accent);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .cred-item p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray-light);
         }
         
-        /* Artists Supported */
-        .artists-section { background: var(--gray-dark); }
-        .artists-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+        /* Experience */
+        .experience-section { background: var(--gray-dark); }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
         }
-        .artist-tag {
-            padding: 14px 24px;
+        @media (max-width: 1000px) { .experience-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .experience-grid { grid-template-columns: 1fr; } }
+        .experience-card {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 24px;
+        }
+        .experience-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .experience-card ul { list-style: none; }
+        .experience-card li {
+            font-size: 12px;
+            color: var(--gray-light);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .experience-card li:last-child { border-bottom: none; }
+        
+        /* Artists */
+        .artists-section { background: var(--black); }
+        .artists-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+        .artist-tag {
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
-            transition: all 0.3s;
         }
-        .artist-tag:hover { 
-            border-color: var(--accent); 
-            background: var(--accent-dim); 
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
+        .artist-tag:hover { border-color: var(--accent); color: var(--accent); }
         
         /* Gallery */
-        .gallery-section { background: var(--black); }
+        .gallery-section { background: var(--gray-dark); }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
+            gap: 6px;
         }
-        @media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 600px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 500px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
         .gallery-item {
             aspect-ratio: 1;
             overflow: hidden;
-            border-radius: 12px;
             cursor: pointer;
-            position: relative;
         }
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s, filter 0.3s;
-        }
-        .gallery-item:hover img { 
-            transform: scale(1.1); 
-            filter: brightness(1.1) saturate(1.2);
-        }
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gallery-item:hover::after { opacity: 1; }
-        
-        /* Flyers - Masonry */
-        .flyers-section { background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%); }
-        .flyers-gallery {
-            column-count: 4;
-            column-gap: 12px;
-        }
-        @media (max-width: 1200px) { .flyers-gallery { column-count: 3; } }
-        @media (max-width: 800px) { .flyers-gallery { column-count: 2; } }
-        .flyer-item {
-            break-inside: avoid;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
             transition: transform 0.3s;
         }
-        .flyer-item:hover { transform: scale(1.02); }
+        .gallery-item:hover img { transform: scale(1.05); }
+        
+        /* Flyers */
+        .flyers-section { background: var(--black); }
+        .flyers-gallery {
+            column-count: 4;
+            column-gap: 8px;
+        }
+        @media (max-width: 1000px) { .flyers-gallery { column-count: 3; } }
+        @media (max-width: 700px) { .flyers-gallery { column-count: 2; } }
+        .flyer-item {
+            break-inside: avoid;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
         .flyer-item img {
             width: 100%;
             display: block;
-            transition: filter 0.3s;
+            transition: opacity 0.2s;
         }
-        .flyer-item:hover img { filter: brightness(1.1) saturate(1.2); }
+        .flyer-item:hover img { opacity: 0.8; }
         
         .gallery-counter {
             text-align: center;
-            margin-top: 40px;
-            padding: 16px 24px;
-            background: var(--accent-dim);
-            border-radius: 12px;
-            display: inline-block;
+            margin-top: 32px;
         }
         .gallery-counter span {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 36px;
+            font-size: 32px;
             color: var(--accent);
         }
         .gallery-counter p {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--gray-light);
+            color: var(--gray);
         }
         
-        /* Follow Section */
-        .follow-section { background: var(--black); }
+        /* Follow */
+        .follow-section { background: var(--gray-dark); }
         .follow-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 16px;
         }
-        @media (max-width: 800px) {
-            .follow-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 700px) { .follow-grid { grid-template-columns: 1fr; } }
         .follow-card {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 24px;
             text-align: center;
-            transition: all 0.3s;
+            transition: border-color 0.2s;
         }
-        .follow-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
+        .follow-card:hover { border-color: var(--accent); }
         .follow-card img {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid var(--accent);
+            margin-bottom: 16px;
+            border: 2px solid var(--accent);
         }
         .follow-card h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 24px;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
         }
         .follow-card p {
             color: var(--accent);
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 13px;
+            margin-bottom: 16px;
         }
         .follow-btn {
             display: inline-block;
-            padding: 12px 28px;
-            background: var(--accent-dim);
+            padding: 10px 24px;
             border: 1px solid rgba(0,255,136,0.3);
-            border-radius: 30px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s;
         }
-        .follow-btn:hover {
-            background: var(--accent);
-            color: var(--black);
-        }
+        .follow-btn:hover { background: var(--accent); color: var(--black); }
         
-        /* Press Section */
-        .press-section { background: linear-gradient(180deg, var(--gray-dark) 0%, var(--black) 100%); }
+        /* Press */
+        .press-section { background: var(--black); }
         .press-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 50px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
-        @media (max-width: 700px) {
-            .press-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .press-grid { grid-template-columns: 1fr; } }
         .press-card {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px;
-            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
             display: flex;
-            transition: all 0.3s;
-        }
-        .press-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
+            overflow: hidden;
         }
         .press-card img {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
         }
         .press-card-content {
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         .press-card h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
         }
         .press-card .year {
             color: var(--accent);
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
         }
         
         /* Quotes */
         .quotes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
         }
         .quote-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 32px;
-            position: relative;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-        .quote-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--purple));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .quote-card:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-        .quote-card:hover::before { opacity: 1; }
-        .quote-mark {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 100px;
-            color: var(--accent);
-            opacity: 0.15;
-            position: absolute;
-            top: 5px;
-            left: 20px;
-            line-height: 1;
+            padding: 24px;
         }
         .quote-card p {
-            font-size: 15px;
-            line-height: 1.8;
+            font-size: 14px;
+            line-height: 1.7;
             color: var(--gray-light);
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 16px;
             font-style: italic;
         }
         .quote-source {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--accent);
             font-weight: 600;
         }
         
         /* Booking Form */
-        .booking { 
-            background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 50%, var(--black) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .booking::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-            transform: translate(-50%, -50%);
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .booking-container { 
-            max-width: 700px; 
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .booking-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
+        .booking { background: var(--gray-dark); }
+        .booking-container { max-width: 600px; margin: 0 auto; }
+        .booking-header { text-align: center; margin-bottom: 32px; }
         .booking-intro {
-            font-size: 18px;
+            font-size: 15px;
             color: var(--gray-light);
-            margin-top: 16px;
-            line-height: 1.7;
+            margin-top: 12px;
         }
         
         .booking-form {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            position: relative;
-            overflow: hidden;
-        }
-        .booking-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--purple), var(--blue), var(--accent));
-            background-size: 300% 100%;
-            animation: gradient-move 5s linear infinite;
-        }
-        @keyframes gradient-move {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 300% 50%; }
+            background: var(--black);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 32px;
         }
         
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 16px;
         }
-        @media (max-width: 600px) {
-            .form-row { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
         
         .form-group { display: flex; flex-direction: column; }
-        .form-group.full { margin-bottom: 24px; }
+        .form-group.full { margin-bottom: 20px; }
         .form-group label {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray-light);
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 8px;
             font-weight: 600;
         }
         .form-group input,
         .form-group select,
         .form-group textarea {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 15px;
+            background: var(--gray-dark);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 14px 16px;
+            font-size: 14px;
             color: var(--white);
             font-family: 'Inter', sans-serif;
-            transition: all 0.3s;
+            transition: border-color 0.2s;
         }
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 20px var(--accent-dim);
-            background: rgba(0,255,136,0.03);
         }
         .form-group input::placeholder,
         .form-group textarea::placeholder { color: var(--gray); }
         .form-group select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%2300ff88' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300ff88' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 16px center;
+            background-position: right 14px center;
         }
         .form-group select option { background: var(--black); }
-        .form-group textarea { resize: vertical; min-height: 120px; }
-        
-        .event-types {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        @media (max-width: 600px) {
-            .event-types { grid-template-columns: repeat(2, 1fr); }
-        }
-        .event-type-btn {
-            padding: 16px 12px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .event-type-btn:hover, .event-type-btn.active {
-            border-color: var(--accent);
-            background: var(--accent-dim);
-        }
-        .event-type-btn.active {
-            box-shadow: 0 0 20px var(--accent-dim);
-        }
-        .event-type-btn .icon {
-            font-size: 24px;
-            margin-bottom: 6px;
-            display: block;
-        }
-        .event-type-btn .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gray-light);
-        }
-        .event-type-btn.active .label { color: var(--accent); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
         
         .submit-btn {
             width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--accent), #00cc6a);
+            padding: 16px;
+            background: var(--accent);
             color: var(--black);
             border: none;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 4px;
+            font-size: 18px;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
+            transition: opacity 0.2s;
         }
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        .submit-btn:hover::before { left: 100%; }
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px var(--accent-glow);
-        }
+        .submit-btn:hover { opacity: 0.9; }
         
         /* Contact Bar */
         .contact-bar {
-            background: var(--gray-dark);
-            padding: 60px 24px;
+            background: var(--black);
+            padding: 48px 24px;
             text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
         .contact-bar h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 40px;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
         }
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 40px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 15px;
+            gap: 10px;
+            font-size: 14px;
         }
-        .contact-item svg { width: 22px; height: 22px; color: var(--accent); }
-        .contact-item a { 
-            color: var(--white); 
-            transition: color 0.2s;
-        }
+        .contact-item svg { width: 18px; height: 18px; color: var(--accent); }
+        .contact-item a { color: var(--white); }
         .contact-item a:hover { color: var(--accent); }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 30px;
+            gap: 12px;
         }
         .social-links a {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
+            transition: border-color 0.2s;
         }
-        .social-links a:hover { 
-            border-color: var(--accent); 
-            background: var(--accent-dim);
-            transform: translateY(-3px);
-        }
-        .social-links svg { width: 22px; height: 22px; }
+        .social-links a:hover { border-color: var(--accent); }
+        .social-links svg { width: 18px; height: 18px; }
         
         /* Footer */
         footer {
             border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 24px;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gray);
             background: var(--black);
         }
@@ -1036,79 +634,61 @@
             position: fixed;
             inset: 0;
             z-index: 1000;
-            background: rgba(0,0,0,0.97);
+            background: rgba(0,0,0,0.95);
             align-items: center;
             justify-content: center;
             padding: 20px;
-            backdrop-filter: blur(10px);
         }
         .lightbox.active { display: flex; }
         .lightbox img {
             max-width: 90vw;
             max-height: 85vh;
             object-fit: contain;
-            border-radius: 12px;
-            animation: zoomIn 0.3s ease;
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
         .lightbox-close {
             position: absolute;
-            top: 24px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            top: 20px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
             background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50%;
+            border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
         }
-        .lightbox-close:hover { background: var(--accent); border-color: var(--accent); }
-        .lightbox-close svg { width: 22px; height: 22px; stroke: var(--white); }
+        .lightbox-close:hover { background: var(--accent); }
+        .lightbox-close svg { width: 20px; height: 20px; stroke: var(--white); }
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 56px;
-            height: 56px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
         }
-        .lightbox-nav:hover { background: var(--accent); border-color: var(--accent); }
-        .lightbox-nav svg { width: 26px; height: 26px; stroke: var(--white); }
-        .lightbox-prev { left: 24px; }
-        .lightbox-next { right: 24px; }
+        .lightbox-nav:hover { background: var(--accent); }
+        .lightbox-nav svg { width: 24px; height: 24px; stroke: var(--white); }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
         .lightbox-counter {
             position: absolute;
-            bottom: 30px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray-light);
-            letter-spacing: 3px;
-            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
-    <!-- Background effects -->
-    <div class="bg-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    
     <!-- Header -->
     <header>
         <a href="#" class="logo">DAN COOK</a>
@@ -1117,7 +697,6 @@
             <a href="#experience">Experience</a>
             <a href="#gallery">Gallery</a>
             <a href="#flyers">Flyers</a>
-            <a href="#follow">Follow</a>
             <a href="#press">Press</a>
             <a href="#booking" class="btn-book">Book Now</a>
         </nav>
@@ -1127,12 +706,11 @@
     </header>
     
     <div class="mobile-menu" id="mobileMenu">
-        <span class="mobile-close" onclick="toggleMenu()">×</span>
+        <span class="mobile-close" onclick="toggleMenu()">&times;</span>
         <a href="#about" onclick="toggleMenu()">About</a>
         <a href="#experience" onclick="toggleMenu()">Experience</a>
         <a href="#gallery" onclick="toggleMenu()">Gallery</a>
         <a href="#flyers" onclick="toggleMenu()">Flyers</a>
-        <a href="#follow" onclick="toggleMenu()">Follow</a>
         <a href="#press" onclick="toggleMenu()">Press</a>
         <a href="#booking" onclick="toggleMenu()">Book Now</a>
     </div>
@@ -1162,13 +740,12 @@
                 <a href="#listen" class="btn btn-secondary">Listen</a>
             </div>
         </div>
-        <div class="scroll-indicator">Scroll</div>
     </section>
     
     <!-- Listen -->
     <section class="listen" id="listen">
         <div class="section-header">
-            <span class="section-tag">Mixes</span>
+            <p class="section-tag">Mixes</p>
             <h2 class="section-title">LISTEN</h2>
         </div>
         <div class="soundcloud-embed">
@@ -1180,11 +757,11 @@
                 SoundCloud
             </a>
             <a href="https://www.mixcloud.com/djdancook" target="_blank" class="listen-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.462 8.596a1.256 1.256 0 0 0-.126.004c-.078.008-.163.02-.252.042-.179.043-.376.11-.565.228a1.652 1.652 0 0 0-.536.52c-.144.222-.249.493-.307.814-.06.319-.07.67-.04 1.044.028.374.097.77.204 1.178.107.408.251.829.429 1.25.178.423.39.845.632 1.261.241.416.512.823.81 1.217l.005.006.043.056a.628.628 0 0 0 .505.264c.207 0 .389-.109.508-.265l.042-.055.006-.008c.297-.393.567-.8.809-1.215.24-.416.453-.838.63-1.26.178-.422.322-.843.43-1.251.106-.409.175-.805.203-1.178.03-.374.02-.725-.04-1.044a1.913 1.913 0 0 0-.307-.814 1.65 1.65 0 0 0-.537-.52 1.62 1.62 0 0 0-.564-.228 1.582 1.582 0 0 0-.253-.042 1.256 1.256 0 0 0-.126-.004h-.603zm4.003 0a1.256 1.256 0 0 0-.127.004c-.078.008-.163.02-.252.042-.179.043-.376.11-.565.228a1.652 1.652 0 0 0-.536.52c-.144.222-.248.493-.307.814-.06.319-.07.67-.04 1.044.029.374.098.77.204 1.178.107.408.252.829.43 1.25.178.423.39.845.631 1.261.242.416.512.823.81 1.217l.005.006.043.056a.628.628 0 0 0 .505.264c.207 0 .39-.109.508-.265l.042-.055.006-.008c.298-.393.568-.8.81-1.215.24-.416.452-.838.63-1.26.178-.422.322-.843.43-1.251.106-.409.175-.805.203-1.178.03-.374.02-.725-.04-1.044a1.913 1.913 0 0 0-.307-.814 1.652 1.652 0 0 0-.537-.52 1.619 1.619 0 0 0-.564-.228 1.574 1.574 0 0 0-.253-.042 1.256 1.256 0 0 0-.126-.004h-.603zm11.67 0c-.078.001-.152.007-.224.02a1.268 1.268 0 0 0-.389.122c-.241.115-.454.304-.602.565-.15.26-.229.593-.21.996.019.403.133.877.374 1.41.241.533.61 1.125 1.137 1.76.527.635 1.212 1.313 2.085 2.014a.628.628 0 0 0 .822-.051l.006-.006.04-.04c.571-.566 1.035-1.11 1.393-1.63.357-.52.61-1.016.762-1.485.152-.469.204-.911.163-1.323a1.92 1.92 0 0 0-.315-.896 1.65 1.65 0 0 0-.607-.532 1.619 1.619 0 0 0-.724-.21h-.002c-.078-.007-.154-.01-.227-.01h-.481z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
                 Mixcloud
             </a>
             <a href="https://ra.co/dj/dancook" target="_blank" class="listen-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><text x="2" y="17" font-size="12" font-weight="bold">RA</text></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><text x="4" y="16" font-size="10" font-weight="bold">RA</text></svg>
                 Resident Advisor
             </a>
         </div>
@@ -1198,14 +775,13 @@
             </div>
             <div class="about-content">
                 <div class="section-header">
-                    <span class="section-tag">Bio</span>
+                    <p class="section-tag">Bio</p>
                     <h2 class="section-title">ABOUT DAN COOK</h2>
                 </div>
                 <p>Dan has over 20 years experience working as a DJ. Originally from London; Dan worked in the music industry, managing licensing and distribution for all 4 of the major record labels as well as writing a monthly tastemaker column for legendary publication DJ Mag.</p>
                 <p>Whilst at the weekends he was consistently delivering upfront and eclectic selections as a DJ, Dan climbed the ranks to become a regular favourite at some of the UK's top venues and festivals such as Ministry of Sound, Pacha, Egg, The Cross, The Scala, The Lightbox, The Secret Garden Party and Glastonbury.</p>
-                <p>Currently working in A&R for Universal Music Group, Dan has been based in Bali for the past 10 years and has held DJ residencies at many of the island's key venues. Dan has also lent his expertise as a music consultant for Kilo Bali, Roosterfish, The Mirah Group and the Good Food Brotherhood.</p>
-                <p>Musician, music director, accomplished and versatile DJ... Dan has toured extensively across Europe and Asia and has been booked to warm up the crowd for headline acts such as Justice, Rudimental, LTJ Bukem, Pete Tong, Flight Facilities, Claptone, Timo Maas, Layo & Bushwaka, Sebastien Leger, Chase & Status, M.A.N.D.Y and countless others.</p>
-                <p>His background in House music, Techno, Electronica and Disco, combined with his love of Soul, Jazz, Funk, Hip Hop and World Music always results in unique, diverse DJ sets - everything from balearic sunset sessions and daytime pool parties to late night dancefloor action.</p>
+                <p>Currently working in A&R for Universal Music Group, Dan has been based in Bali for the past 10 years and has held DJ residencies at many of the island's key venues.</p>
+                <p>His background in House music, Techno, Electronica and Disco, combined with his love of Soul, Jazz, Funk, Hip Hop and World Music always results in unique, diverse DJ sets.</p>
             </div>
         </div>
         
@@ -1232,12 +808,12 @@
     <!-- Experience -->
     <section class="experience-section" id="experience">
         <div class="section-header">
-            <span class="section-tag">Residencies</span>
+            <p class="section-tag">Residencies</p>
             <h2 class="section-title">EXPERIENCE</h2>
         </div>
         <div class="experience-grid">
             <div class="experience-card">
-                <h3>Current Bali Residencies</h3>
+                <h3>Current Bali</h3>
                 <ul>
                     <li>Atlas Beach Fest</li>
                     <li>Old Man's</li>
@@ -1251,24 +827,21 @@
                 </ul>
             </div>
             <div class="experience-card">
-                <h3>Pre-Covid Residencies</h3>
+                <h3>Pre-Covid</h3>
                 <ul>
-                    <li>Cafe del Mar - Bali</li>
-                    <li>La Brisa - Bali</li>
-                    <li>Ulu Cliff House - Bali</li>
-                    <li>Bikini - Bali</li>
-                    <li>Kilo - Bali</li>
-                    <li>Deus Ex Machina - Bali</li>
-                    <li>La Favela - Bali</li>
-                    <li>Finn's Beach Club - Bali</li>
-                    <li>Da Maria - Bali</li>
-                    <li>Tropicola - Bali</li>
-                    <li>Full Moon Party - Thailand</li>
-                    <li>Beach Republic - Thailand</li>
+                    <li>Cafe del Mar</li>
+                    <li>La Brisa</li>
+                    <li>Ulu Cliff House</li>
+                    <li>Deus Ex Machina</li>
+                    <li>La Favela</li>
+                    <li>Finn's Beach Club</li>
+                    <li>Da Maria</li>
+                    <li>Tropicola</li>
+                    <li>Full Moon Party</li>
                 </ul>
             </div>
             <div class="experience-card">
-                <h3>Previous UK Residencies</h3>
+                <h3>UK Residencies</h3>
                 <ul>
                     <li>Ministry of Sound</li>
                     <li>Pacha</li>
@@ -1282,7 +855,7 @@
                 </ul>
             </div>
             <div class="experience-card">
-                <h3>Music Direction Clients</h3>
+                <h3>Music Direction</h3>
                 <ul>
                     <li>Universal Music Group</li>
                     <li>Good Food Brotherhood</li>
@@ -1291,9 +864,6 @@
                     <li>Roosterfish</li>
                     <li>DJ Mag</li>
                     <li>Renaissance Bali</li>
-                    <li>Escapology</li>
-                    <li>Bikini Restaurant</li>
-                    <li>Sisterfields</li>
                     <li>Karma Kandara</li>
                 </ul>
             </div>
@@ -1303,7 +873,7 @@
     <!-- Supported -->
     <section class="artists-section">
         <div class="section-header">
-            <span class="section-tag">Warmed Up For</span>
+            <p class="section-tag">Warmed Up For</p>
             <h2 class="section-title">SUPPORTED</h2>
         </div>
         <div class="artists-grid">
@@ -1324,7 +894,7 @@
     <!-- Gallery -->
     <section class="gallery-section" id="gallery">
         <div class="section-header">
-            <span class="section-tag">Photos</span>
+            <p class="section-tag">Photos</p>
             <h2 class="section-title">GALLERY</h2>
         </div>
         <div class="gallery-grid" id="galleryGrid">
@@ -1342,9 +912,9 @@
     </section>
     
     <!-- Gigs -->
-    <section class="gallery-section" style="background: var(--gray-dark);">
+    <section class="gallery-section" style="background: var(--black);">
         <div class="section-header">
-            <span class="section-tag">Events</span>
+            <p class="section-tag">Events</p>
             <h2 class="section-title">GIGS</h2>
         </div>
         <div class="gallery-grid" id="gigsGrid">
@@ -1360,7 +930,7 @@
     <!-- Flyers -->
     <section class="flyers-section" id="flyers">
         <div class="section-header">
-            <span class="section-tag">Archive</span>
+            <p class="section-tag">Archive</p>
             <h2 class="section-title">FLYERS</h2>
         </div>
         <div class="flyers-gallery" id="flyersGrid">
@@ -1420,18 +990,16 @@
             <div class="flyer-item"><img src="images/flyers/988915_351245.png" alt="Flyer" loading="lazy"></div>
             <div class="flyer-item"><img src="images/flyers/999166_695293.jpeg" alt="Flyer" loading="lazy"></div>
         </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <div class="gallery-counter">
-                <span id="flyerCount">55</span>
-                <p>Event Flyers</p>
-            </div>
+        <div class="gallery-counter">
+            <span id="flyerCount">55</span>
+            <p>Event Flyers</p>
         </div>
     </section>
     
     <!-- Follow -->
     <section class="follow-section" id="follow">
         <div class="section-header">
-            <span class="section-tag">Social</span>
+            <p class="section-tag">Social</p>
             <h2 class="section-title">FOLLOW</h2>
         </div>
         <div class="follow-grid">
@@ -1459,7 +1027,7 @@
     <!-- Press -->
     <section class="press-section" id="press">
         <div class="section-header">
-            <span class="section-tag">Media</span>
+            <p class="section-tag">Media</p>
             <h2 class="section-title">PRESS</h2>
         </div>
         <div class="press-grid">
@@ -1479,35 +1047,26 @@
             </div>
         </div>
         
-        <div class="section-header" style="margin-top: 60px;">
-            <span class="section-tag">What They Say</span>
-            <h2 class="section-title">REVIEWS</h2>
+        <div class="section-header">
+            <p class="section-tag">Reviews</p>
+            <h2 class="section-title">WHAT THEY SAY</h2>
         </div>
         <div class="quotes-grid">
             <div class="quote-card">
-                <span class="quote-mark">"</span>
-                <p>Dan is one of the good guys. I mean this both professionally and personally. Top quality human. Top quality DJ.</p>
+                <p>"Dan is one of the good guys. I mean this both professionally and personally. Top quality human. Top quality DJ."</p>
                 <span class="quote-source">Eddy Temple-Morris, Radio 1 / XFM</span>
             </div>
             <div class="quote-card">
-                <span class="quote-mark">"</span>
-                <p>We got Dan to open our main room prior to the Justice set for the Missing Xmas party, he delivered 2500 people with their hands in the air.</p>
+                <p>"We got Dan to open our main room prior to the Justice set for the Missing Xmas party, he delivered 2500 people with their hands in the air."</p>
                 <span class="quote-source">Sara King, Missing Events</span>
             </div>
             <div class="quote-card">
-                <span class="quote-mark">"</span>
-                <p>Always impressed by Dan's sets, both with his ability on the decks and his depth of musical knowledge. Definitely one to watch.</p>
+                <p>"Always impressed by Dan's sets, both with his ability on the decks and his depth of musical knowledge. Definitely one to watch."</p>
                 <span class="quote-source">Rob Mullin, Soundcrash</span>
             </div>
             <div class="quote-card">
-                <span class="quote-mark">"</span>
-                <p>Cerebral and innovative, Koh Samui's low-profile bay wonder is a hidden gem for those in the know.</p>
-                <span class="quote-source">One Coast Magazine</span>
-            </div>
-            <div class="quote-card">
-                <span class="quote-mark">"</span>
-                <p>A DJ that plays records for the right reasons. He's no automaton — genuine connection to his audience and more importantly, to the music.</p>
-                <span class="quote-source">Avin Patel, DJ Mag / ASP Records</span>
+                <p>"A DJ that plays records for the right reasons. He's no automaton - genuine connection to his audience and more importantly, to the music."</p>
+                <span class="quote-source">Avin Patel, DJ Mag</span>
             </div>
         </div>
     </section>
@@ -1516,47 +1075,18 @@
     <section class="booking" id="booking">
         <div class="booking-container">
             <div class="booking-header">
-                <span class="section-tag">Enquiries</span>
+                <p class="section-tag">Enquiries</p>
                 <h2 class="section-title">BOOK DAN</h2>
-                <p class="booking-intro">Available for clubs, festivals, beach clubs, private events and corporate functions across Bali and internationally.</p>
+                <p class="booking-intro">Available for clubs, festivals, beach clubs, private events and corporate functions.</p>
             </div>
             
             <form class="booking-form" action="https://formspree.io/f/myzevrzl" method="POST">
                 <input type="hidden" name="_subject" value="DJ Dan Cook Booking Request">
-                <input type="hidden" name="event_type" id="eventTypeInput" value="">
-                
-                <label style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--gray-light); margin-bottom: 12px; font-weight: 600; display: block;">Event Type *</label>
-                <div class="event-types">
-                    <div class="event-type-btn" data-type="club" onclick="selectEventType(this)">
-                        <span class="icon">🎧</span>
-                        <span class="label">Club Night</span>
-                    </div>
-                    <div class="event-type-btn" data-type="festival" onclick="selectEventType(this)">
-                        <span class="icon">🎪</span>
-                        <span class="label">Festival</span>
-                    </div>
-                    <div class="event-type-btn" data-type="beach-club" onclick="selectEventType(this)">
-                        <span class="icon">🏖️</span>
-                        <span class="label">Beach Club</span>
-                    </div>
-                    <div class="event-type-btn" data-type="private" onclick="selectEventType(this)">
-                        <span class="icon">🎉</span>
-                        <span class="label">Private Event</span>
-                    </div>
-                    <div class="event-type-btn" data-type="corporate" onclick="selectEventType(this)">
-                        <span class="icon">🏢</span>
-                        <span class="label">Corporate</span>
-                    </div>
-                    <div class="event-type-btn" data-type="wedding" onclick="selectEventType(this)">
-                        <span class="icon">💍</span>
-                        <span class="label">Wedding</span>
-                    </div>
-                </div>
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Your Name *</label>
-                        <input type="text" name="name" required placeholder="Full name">
+                        <label>Name *</label>
+                        <input type="text" name="name" required placeholder="Your name">
                     </div>
                     <div class="form-group">
                         <label>Email *</label>
@@ -1575,8 +1105,16 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Venue / Location</label>
-                        <input type="text" name="venue" placeholder="Venue name & city">
+                        <label>Event Type *</label>
+                        <select name="event_type" required>
+                            <option value="">Select...</option>
+                            <option value="club">Club Night</option>
+                            <option value="festival">Festival</option>
+                            <option value="beach-club">Beach Club</option>
+                            <option value="private">Private Event</option>
+                            <option value="corporate">Corporate</option>
+                            <option value="wedding">Wedding</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Set Length</label>
@@ -1590,11 +1128,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>Venue / Location</label>
+                        <input type="text" name="venue" placeholder="Venue name & city">
+                    </div>
+                </div>
                 <div class="form-group full">
                     <label>Event Details</label>
-                    <textarea name="message" placeholder="Tell us about your event — expected attendance, vibe, music style preferences, any special requests..."></textarea>
+                    <textarea name="message" placeholder="Tell us about your event..."></textarea>
                 </div>
-                <button type="submit" class="submit-btn">SEND ENQUIRY →</button>
+                <button type="submit" class="submit-btn">SEND ENQUIRY</button>
             </form>
         </div>
     </section>
@@ -1622,12 +1166,6 @@
             <a href="https://www.facebook.com/djdancook" target="_blank" title="Facebook">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://www.mixcloud.com/djdancook" target="_blank" title="Mixcloud">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.462 8.596c-.078.001-.152.007-.224.02a1.268 1.268 0 0 0-.389.122c-.241.115-.454.304-.602.565-.15.26-.229.593-.21.996.019.403.133.877.374 1.41.241.533.61 1.125 1.137 1.76.527.635 1.212 1.313 2.085 2.014a.628.628 0 0 0 .822-.051l.006-.006.04-.04c.571-.566 1.035-1.11 1.393-1.63.357-.52.61-1.016.762-1.485.152-.469.204-.911.163-1.323a1.92 1.92 0 0 0-.315-.896 1.65 1.65 0 0 0-.607-.532 1.619 1.619 0 0 0-.724-.21h-.002c-.078-.007-.154-.01-.227-.01h-.481z"/></svg>
-            </a>
-            <a href="https://ra.co/dj/dancook" target="_blank" title="Resident Advisor">
-                <svg viewBox="0 0 24 24" fill="currentColor"><text x="4" y="17" font-size="11" font-weight="bold">RA</text></svg>
-            </a>
             <a href="https://wa.me/6282340918425" target="_blank" title="WhatsApp">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
@@ -1636,7 +1174,7 @@
     
     <!-- Footer -->
     <footer>
-        <p>© 2026 DAN COOK</p>
+        <p>2026 DAN COOK</p>
         <p>BALI, INDONESIA</p>
     </footer>
     
@@ -1656,13 +1194,11 @@
     </div>
     
     <script>
-        // Mobile menu
         function toggleMenu() { 
             document.getElementById('mobileMenu').classList.toggle('active'); 
             document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
         }
         
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
@@ -1670,14 +1206,6 @@
             });
         });
         
-        // Event type selector
-        function selectEventType(el) {
-            document.querySelectorAll('.event-type-btn').forEach(btn => btn.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById('eventTypeInput').value = el.dataset.type;
-        }
-        
-        // Lightbox - collect all clickable images
         const allImages = [...document.querySelectorAll('.gallery-item, .flyer-item')];
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -1719,19 +1247,7 @@
             if (e.key === 'ArrowRight') navigateLightbox(1);
         });
         
-        // Update flyer count
         document.getElementById('flyerCount').textContent = document.querySelectorAll('.flyer-item').length;
-        
-        // Parallax effect on orbs
-        document.addEventListener('mousemove', e => {
-            const orbs = document.querySelectorAll('.orb');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            orbs.forEach((orb, i) => {
-                const speed = (i + 1) * 15;
-                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
     </script>
 </body>
 </html>
