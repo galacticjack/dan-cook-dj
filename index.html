@@ -96,7 +96,7 @@
             background-clip: text;
         }
         
-        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-links a {
             font-size: 11px;
             font-weight: 500;
@@ -142,12 +142,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 24px;
+            gap: 20px;
         }
         .mobile-menu.active { display: flex; }
         .mobile-menu a {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 48px;
+            font-size: 40px;
             letter-spacing: 6px;
             transition: color 0.2s;
         }
@@ -163,7 +163,7 @@
         }
         .mobile-close:hover { color: var(--white); }
         
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .nav-links { display: none; }
             .hamburger { display: flex; }
         }
@@ -179,9 +179,7 @@
             z-index: 1;
         }
         
-        .hero-content {
-            max-width: 900px;
-        }
+        .hero-content { max-width: 900px; }
         
         .hero-tag {
             display: inline-flex;
@@ -208,8 +206,8 @@
             box-shadow: 0 0 10px var(--accent);
         }
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px var(--accent); }
-            50% { opacity: 0.5; transform: scale(0.8); box-shadow: 0 0 20px var(--accent); }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
         }
         
         .hero h1 {
@@ -302,7 +300,6 @@
             background: var(--accent-dim);
         }
         
-        /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 40px;
@@ -389,106 +386,99 @@
             border-color: var(--accent); 
             background: var(--accent-dim);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .listen-link svg { width: 22px; height: 22px; }
         
-        /* Flyers Gallery - Masonry style */
-        .flyers-gallery {
-            column-count: 4;
-            column-gap: 12px;
-        }
-        @media (max-width: 1200px) { .flyers-gallery { column-count: 3; } }
-        @media (max-width: 800px) { .flyers-gallery { column-count: 2; } }
-        @media (max-width: 500px) { .flyers-gallery { column-count: 2; column-gap: 8px; } }
-        
-        .flyer-item {
-            break-inside: avoid;
-            margin-bottom: 12px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s;
-        }
-        .flyer-item:hover { transform: scale(1.02); }
-        .flyer-item img {
-            width: 100%;
-            display: block;
-            transition: filter 0.3s;
-        }
-        .flyer-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .flyer-item:hover::after { opacity: 1; }
-        .flyer-item:hover img { filter: brightness(1.1) saturate(1.2); }
-        
-        .gallery-counter {
-            text-align: center;
-            margin-top: 40px;
-            padding: 16px 24px;
-            background: var(--accent-dim);
-            border-radius: 12px;
-            display: inline-block;
-        }
-        .gallery-counter span {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 36px;
-            color: var(--accent);
-        }
-        .gallery-counter p {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gray-light);
-        }
-        
-        /* Bio */
-        .bio-section { background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%); }
-        .bio-grid {
+        /* About Section */
+        .about-section { background: var(--black); }
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1.3fr;
             gap: 60px;
             align-items: start;
         }
         @media (max-width: 900px) {
-            .bio-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
         }
-        .bio-image {
+        .about-image {
             border-radius: 20px;
             overflow: hidden;
             position: relative;
         }
-        .bio-image::before {
+        .about-image::before {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, var(--accent-dim), transparent);
             z-index: 1;
         }
-        .bio-image img {
+        .about-image img {
             width: 100%;
             display: block;
             filter: grayscale(20%);
             transition: filter 0.5s;
         }
-        .bio-image:hover img { filter: grayscale(0%); }
-        .bio-content p {
+        .about-image:hover img { filter: grayscale(0%); }
+        .about-content p {
             font-size: 16px;
             line-height: 1.9;
             color: var(--gray-light);
             margin-bottom: 20px;
         }
-        .bio-content p:first-of-type {
+        .about-content p:first-of-type {
             font-size: 20px;
             color: var(--white);
             font-weight: 300;
         }
+        
+        /* Experience Section */
+        .experience-section { 
+            background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%);
+        }
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1100px) {
+            .experience-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .experience-grid { grid-template-columns: 1fr; }
+        }
+        .experience-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+        .experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .experience-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .experience-card ul {
+            list-style: none;
+        }
+        .experience-card li {
+            font-size: 13px;
+            color: var(--gray-light);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: color 0.2s;
+        }
+        .experience-card li:last-child { border-bottom: none; }
+        .experience-card li:hover { color: var(--white); }
         
         /* Credentials */
         .cred-grid {
@@ -522,7 +512,7 @@
         }
         
         /* Artists Supported */
-        .artists-section { background: var(--black); }
+        .artists-section { background: var(--gray-dark); }
         .artists-grid {
             display: flex;
             flex-wrap: wrap;
@@ -545,34 +535,193 @@
             transform: translateY(-2px);
         }
         
-        /* Venues */
-        .venues-section { margin-top: 50px; }
-        .venues-label {
+        /* Gallery */
+        .gallery-section { background: var(--black); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+        @media (max-width: 1000px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            position: relative;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .gallery-item:hover img { 
+            transform: scale(1.1); 
+            filter: brightness(1.1) saturate(1.2);
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-item:hover::after { opacity: 1; }
+        
+        /* Flyers - Masonry */
+        .flyers-section { background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%); }
+        .flyers-gallery {
+            column-count: 4;
+            column-gap: 12px;
+        }
+        @media (max-width: 1200px) { .flyers-gallery { column-count: 3; } }
+        @media (max-width: 800px) { .flyers-gallery { column-count: 2; } }
+        .flyer-item {
+            break-inside: avoid;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .flyer-item:hover { transform: scale(1.02); }
+        .flyer-item img {
+            width: 100%;
+            display: block;
+            transition: filter 0.3s;
+        }
+        .flyer-item:hover img { filter: brightness(1.1) saturate(1.2); }
+        
+        .gallery-counter {
+            text-align: center;
+            margin-top: 40px;
+            padding: 16px 24px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            display: inline-block;
+        }
+        .gallery-counter span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--accent);
+        }
+        .gallery-counter p {
             font-size: 11px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray-light);
+        }
+        
+        /* Follow Section */
+        .follow-section { background: var(--black); }
+        .follow-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 800px) {
+            .follow-grid { grid-template-columns: 1fr; }
+        }
+        .follow-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .follow-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .follow-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent);
+        }
+        .follow-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
             letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .follow-card p {
             color: var(--accent);
-            margin-bottom: 16px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .follow-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,255,136,0.3);
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .follow-btn:hover {
+            background: var(--accent);
+            color: var(--black);
+        }
+        
+        /* Press Section */
+        .press-section { background: linear-gradient(180deg, var(--gray-dark) 0%, var(--black) 100%); }
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+        @media (max-width: 700px) {
+            .press-grid { grid-template-columns: 1fr; }
+        }
+        .press-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            transition: all 0.3s;
+        }
+        .press-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .press-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .press-card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .press-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .press-card .year {
+            color: var(--accent);
+            font-size: 14px;
             font-weight: 600;
         }
-        .venues-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .venue-tag {
-            padding: 10px 16px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 6px;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-        .venue-tag:hover { border-color: var(--accent); color: var(--accent); }
         
-        /* Press Quotes */
-        .press { background: linear-gradient(180deg, var(--gray-dark) 0%, var(--black) 100%); }
+        /* Quotes */
         .quotes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -630,7 +779,7 @@
             font-weight: 600;
         }
         
-        /* Booking Form - Super sick */
+        /* Booking Form */
         .booking { 
             background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 50%, var(--black) 100%);
             position: relative;
@@ -745,38 +894,6 @@
         .form-group select option { background: var(--black); }
         .form-group textarea { resize: vertical; min-height: 120px; }
         
-        .submit-btn {
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(135deg, var(--accent), #00cc6a);
-            color: var(--black);
-            border: none;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            letter-spacing: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        .submit-btn:hover::before { left: 100%; }
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px var(--accent-glow);
-        }
-        
-        /* Event types visual selector */
         .event-types {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -814,6 +931,37 @@
             color: var(--gray-light);
         }
         .event-type-btn.active .label { color: var(--accent); }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--accent), #00cc6a);
+            color: var(--black);
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .submit-btn:hover::before { left: 100%; }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--accent-glow);
+        }
         
         /* Contact Bar */
         .contact-bar {
@@ -868,7 +1016,6 @@
             border-color: var(--accent); 
             background: var(--accent-dim);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         .social-links svg { width: 22px; height: 22px; }
         
@@ -902,7 +1049,6 @@
             object-fit: contain;
             border-radius: 12px;
             animation: zoomIn 0.3s ease;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
         }
         @keyframes zoomIn {
             from { transform: scale(0.9); opacity: 0; }
@@ -967,9 +1113,11 @@
     <header>
         <a href="#" class="logo">DAN COOK</a>
         <nav class="nav-links">
-            <a href="#listen">Listen</a>
-            <a href="#flyers">Gallery</a>
-            <a href="#bio">Bio</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#flyers">Flyers</a>
+            <a href="#follow">Follow</a>
             <a href="#press">Press</a>
             <a href="#booking" class="btn-book">Book Now</a>
         </nav>
@@ -980,9 +1128,11 @@
     
     <div class="mobile-menu" id="mobileMenu">
         <span class="mobile-close" onclick="toggleMenu()">×</span>
-        <a href="#listen" onclick="toggleMenu()">Listen</a>
-        <a href="#flyers" onclick="toggleMenu()">Gallery</a>
-        <a href="#bio" onclick="toggleMenu()">Bio</a>
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#experience" onclick="toggleMenu()">Experience</a>
+        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        <a href="#flyers" onclick="toggleMenu()">Flyers</a>
+        <a href="#follow" onclick="toggleMenu()">Follow</a>
         <a href="#press" onclick="toggleMenu()">Press</a>
         <a href="#booking" onclick="toggleMenu()">Book Now</a>
     </div>
@@ -1004,7 +1154,7 @@
                 </div>
                 <div class="stat">
                     <h3>9.1K</h3>
-                    <p>SoundCloud Plays</p>
+                    <p>SoundCloud</p>
                 </div>
             </div>
             <div class="hero-cta">
@@ -1022,137 +1172,40 @@
             <h2 class="section-title">LISTEN</h2>
         </div>
         <div class="soundcloud-embed">
-            <iframe 
-                scrolling="no" 
-                frameborder="no" 
-                allow="autoplay" 
-                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djdancook&color=%2300ff88&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
-            </iframe>
+            <iframe scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/djdancook&color=%2300ff88&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
         </div>
         <div class="listen-links">
             <a href="https://soundcloud.com/djdancook" target="_blank" class="listen-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1zm-.899 1.18c-.048 0-.091.037-.098.091l-.175 1.063.175 1.025c.007.053.05.088.098.088.05 0 .091-.035.099-.088l.196-1.025-.196-1.063c-.008-.054-.05-.091-.099-.091zm1.79-.938c-.062 0-.108.043-.117.109l-.198 2.033.198 1.969c.009.063.055.108.117.108.063 0 .108-.045.119-.108l.22-1.969-.22-2.033c-.011-.066-.056-.109-.119-.109zm.882-.274c-.069 0-.117.051-.128.12l-.177 2.187.177 2.107c.011.069.059.118.128.118.07 0 .118-.049.13-.118l.2-2.107-.2-2.187c-.012-.069-.06-.12-.13-.12zm.92-.129c-.077 0-.129.058-.137.134l-.163 2.2.163 2.163c.008.076.06.132.137.132.08 0 .13-.056.14-.132l.183-2.163-.183-2.2c-.01-.076-.06-.134-.14-.134zm.89-.136c-.082 0-.138.063-.148.145l-.15 2.2.15 2.2c.01.082.066.143.148.143.084 0 .139-.061.15-.143l.167-2.2-.167-2.2c-.011-.082-.066-.145-.15-.145zm.92-.033c-.09 0-.148.07-.158.156l-.138 2.233.138 2.233c.01.086.068.154.158.154.09 0 .15-.068.16-.154l.153-2.233-.153-2.233c-.01-.086-.07-.156-.16-.156zm.91-.042c-.096 0-.155.075-.166.164l-.125 2.275.125 2.275c.011.089.07.162.166.162.097 0 .156-.073.168-.162l.14-2.275-.14-2.275c-.012-.089-.071-.164-.168-.164zm.926-.053c-.102 0-.163.08-.175.172l-.113 2.328.113 2.328c.012.092.073.17.175.17.104 0 .165-.078.177-.17l.126-2.328-.126-2.328c-.012-.092-.073-.172-.177-.172zm.916-.063c-.107 0-.17.085-.182.18l-.1 2.391.1 2.391c.012.095.075.178.182.178.109 0 .172-.083.184-.178l.11-2.391-.11-2.391c-.012-.095-.075-.18-.184-.18zm5.594.78c-.323 0-.632.058-.92.162-.19-2.153-2.04-3.842-4.29-3.842-.582 0-1.135.125-1.645.338-.19.08-.241.161-.243.318v7.56c.002.164.131.3.293.312h6.805c1.295 0 2.345-1.05 2.345-2.346 0-1.295-1.05-2.502-2.345-2.502z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1z"/></svg>
                 SoundCloud
+            </a>
+            <a href="https://www.mixcloud.com/djdancook" target="_blank" class="listen-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.462 8.596a1.256 1.256 0 0 0-.126.004c-.078.008-.163.02-.252.042-.179.043-.376.11-.565.228a1.652 1.652 0 0 0-.536.52c-.144.222-.249.493-.307.814-.06.319-.07.67-.04 1.044.028.374.097.77.204 1.178.107.408.251.829.429 1.25.178.423.39.845.632 1.261.241.416.512.823.81 1.217l.005.006.043.056a.628.628 0 0 0 .505.264c.207 0 .389-.109.508-.265l.042-.055.006-.008c.297-.393.567-.8.809-1.215.24-.416.453-.838.63-1.26.178-.422.322-.843.43-1.251.106-.409.175-.805.203-1.178.03-.374.02-.725-.04-1.044a1.913 1.913 0 0 0-.307-.814 1.65 1.65 0 0 0-.537-.52 1.62 1.62 0 0 0-.564-.228 1.582 1.582 0 0 0-.253-.042 1.256 1.256 0 0 0-.126-.004h-.603zm4.003 0a1.256 1.256 0 0 0-.127.004c-.078.008-.163.02-.252.042-.179.043-.376.11-.565.228a1.652 1.652 0 0 0-.536.52c-.144.222-.248.493-.307.814-.06.319-.07.67-.04 1.044.029.374.098.77.204 1.178.107.408.252.829.43 1.25.178.423.39.845.631 1.261.242.416.512.823.81 1.217l.005.006.043.056a.628.628 0 0 0 .505.264c.207 0 .39-.109.508-.265l.042-.055.006-.008c.298-.393.568-.8.81-1.215.24-.416.452-.838.63-1.26.178-.422.322-.843.43-1.251.106-.409.175-.805.203-1.178.03-.374.02-.725-.04-1.044a1.913 1.913 0 0 0-.307-.814 1.652 1.652 0 0 0-.537-.52 1.619 1.619 0 0 0-.564-.228 1.574 1.574 0 0 0-.253-.042 1.256 1.256 0 0 0-.126-.004h-.603zm11.67 0c-.078.001-.152.007-.224.02a1.268 1.268 0 0 0-.389.122c-.241.115-.454.304-.602.565-.15.26-.229.593-.21.996.019.403.133.877.374 1.41.241.533.61 1.125 1.137 1.76.527.635 1.212 1.313 2.085 2.014a.628.628 0 0 0 .822-.051l.006-.006.04-.04c.571-.566 1.035-1.11 1.393-1.63.357-.52.61-1.016.762-1.485.152-.469.204-.911.163-1.323a1.92 1.92 0 0 0-.315-.896 1.65 1.65 0 0 0-.607-.532 1.619 1.619 0 0 0-.724-.21h-.002c-.078-.007-.154-.01-.227-.01h-.481z"/></svg>
+                Mixcloud
             </a>
             <a href="https://ra.co/dj/dancook" target="_blank" class="listen-link">
                 <svg viewBox="0 0 24 24" fill="currentColor"><text x="2" y="17" font-size="12" font-weight="bold">RA</text></svg>
                 Resident Advisor
             </a>
-            <a href="https://www.instagram.com/djdancook" target="_blank" class="listen-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-            </a>
         </div>
     </section>
     
-    <!-- Flyers Gallery -->
-    <section id="flyers">
-        <div class="section-header">
-            <span class="section-tag">Archive</span>
-            <h2 class="section-title">FLYERS & EVENTS</h2>
-        </div>
-        <div class="flyers-gallery" id="flyersGrid">
-            <!-- Real scraped flyers -->
-            <div class="flyer-item"><img src="images/flyers/123045_785763.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/131447_519110.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/153690_305275.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/155234_7582.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/175910_312411.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/179264_84107.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/18275_934839.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/18495_545029.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/235132_96462.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/245596_445181.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/251984_171013.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/260839_85615.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/300856_355546.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/340472_826076.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/367047_502783.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/38191_353475.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/38524_745447.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/388133_31206.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/392384_464824.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/394750_226034.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/407688_533900.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/4086_176338.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/411172_164472.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/414098_873843.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/424067_126910.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/448621_85448.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/480359_217407.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/508610_43287.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/526992_438706.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/537589_42066.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <!-- Gallery images -->
-            <div class="flyer-item"><img src="images/gallery/14928_131712.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/231997_616934.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/259929_855932.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/493806_375074.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/615134_954036.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/666069_493940.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/68585_50813.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/768148_718064.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/805667_604192.jpeg" alt="Gallery" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gallery/867557_203410.jpeg" alt="Gallery" loading="lazy"></div>
-            <!-- Gig images -->
-            <div class="flyer-item"><img src="images/gigs/117896_254629.jpeg" alt="Gig" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gigs/330132_756952.jpeg" alt="Gig" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gigs/420401_683837.jpeg" alt="Gig" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gigs/426131_49077.jpeg" alt="Gig" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gigs/879152_358162.jpeg" alt="Gig" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/gigs/936380_58101.jpeg" alt="Gig" loading="lazy"></div>
-            <!-- More flyers -->
-            <div class="flyer-item"><img src="images/flyers/552052_969610.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/590029_406161.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/590319_392639.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/60107_375984.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/609414_508487.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/617923_225809.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/634724_323748.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/638616_937078.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/639469_589569.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/700846_169649.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/714542_850785.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/778539_925363.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/785584_527382.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/789766_940579.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/792583_907713.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/818055_42820.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/833280_852833.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/863360_584959.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/880050_683773.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/897714_301177.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/922383_418855.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/93789_506079.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/949978_147565.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/988915_351245.png" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/999166_695293.jpeg" alt="Event Flyer" loading="lazy"></div>
-            <div class="flyer-item"><img src="images/flyers/flyers-1.jpg" alt="Event Flyer" loading="lazy"></div>
-        </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <div class="gallery-counter">
-                <span id="flyerCount">46</span>
-                <p>Events & Flyers</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Bio -->
-    <section class="bio-section" id="bio">
-        <div class="bio-grid">
-            <div class="bio-image">
+    <!-- About -->
+    <section class="about-section" id="about">
+        <div class="about-grid">
+            <div class="about-image">
                 <img src="images/gallery/805667_604192.jpeg" alt="Dan Cook">
             </div>
-            <div class="bio-content">
+            <div class="about-content">
                 <div class="section-header">
-                    <span class="section-tag">About</span>
-                    <h2 class="section-title">THE STORY</h2>
+                    <span class="section-tag">Bio</span>
+                    <h2 class="section-title">ABOUT DAN COOK</h2>
                 </div>
-                <p>Originally from London, Dan has over 20 years experience as a DJ.</p>
-                <p>He worked in the music industry managing licensing and distribution for all 4 major record labels, while writing a monthly tastemaker column for legendary publication DJ Mag.</p>
-                <p>At weekends he climbed the ranks to become a favourite at the UK's top venues including Ministry of Sound, Pacha, Egg, The Cross, The Scala, The Lightbox, Secret Garden Party and Glastonbury.</p>
-                <p>Currently A&R at Universal Music Group, Dan has been based in Bali for 10 years. Also a music consultant for Kilo Bali, Roosterfish and The Mirah Group.</p>
-                <p>His background in House, Techno, Electronica and Disco, combined with love of Soul, Jazz, Funk, Hip Hop and World Music results in unique, diverse sets — from balearic sunset sessions to late night dancefloor action.</p>
+                <p>Dan has over 20 years experience working as a DJ. Originally from London; Dan worked in the music industry, managing licensing and distribution for all 4 of the major record labels as well as writing a monthly tastemaker column for legendary publication DJ Mag.</p>
+                <p>Whilst at the weekends he was consistently delivering upfront and eclectic selections as a DJ, Dan climbed the ranks to become a regular favourite at some of the UK's top venues and festivals such as Ministry of Sound, Pacha, Egg, The Cross, The Scala, The Lightbox, The Secret Garden Party and Glastonbury.</p>
+                <p>Currently working in A&R for Universal Music Group, Dan has been based in Bali for the past 10 years and has held DJ residencies at many of the island's key venues. Dan has also lent his expertise as a music consultant for Kilo Bali, Roosterfish, The Mirah Group and the Good Food Brotherhood.</p>
+                <p>Musician, music director, accomplished and versatile DJ... Dan has toured extensively across Europe and Asia and has been booked to warm up the crowd for headline acts such as Justice, Rudimental, LTJ Bukem, Pete Tong, Flight Facilities, Claptone, Timo Maas, Layo & Bushwaka, Sebastien Leger, Chase & Status, M.A.N.D.Y and countless others.</p>
+                <p>His background in House music, Techno, Electronica and Disco, combined with his love of Soul, Jazz, Funk, Hip Hop and World Music always results in unique, diverse DJ sets - everything from balearic sunset sessions and daytime pool parties to late night dancefloor action.</p>
             </div>
         </div>
         
@@ -1176,6 +1229,77 @@
         </div>
     </section>
     
+    <!-- Experience -->
+    <section class="experience-section" id="experience">
+        <div class="section-header">
+            <span class="section-tag">Residencies</span>
+            <h2 class="section-title">EXPERIENCE</h2>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <h3>Current Bali Residencies</h3>
+                <ul>
+                    <li>Atlas Beach Fest</li>
+                    <li>Old Man's</li>
+                    <li>Mari Beach Club</li>
+                    <li>Black Sands</li>
+                    <li>Lacalita</li>
+                    <li>Kong</li>
+                    <li>Caravan</li>
+                    <li>Mamasita</li>
+                    <li>40 Thieves</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Pre-Covid Residencies</h3>
+                <ul>
+                    <li>Cafe del Mar - Bali</li>
+                    <li>La Brisa - Bali</li>
+                    <li>Ulu Cliff House - Bali</li>
+                    <li>Bikini - Bali</li>
+                    <li>Kilo - Bali</li>
+                    <li>Deus Ex Machina - Bali</li>
+                    <li>La Favela - Bali</li>
+                    <li>Finn's Beach Club - Bali</li>
+                    <li>Da Maria - Bali</li>
+                    <li>Tropicola - Bali</li>
+                    <li>Full Moon Party - Thailand</li>
+                    <li>Beach Republic - Thailand</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Previous UK Residencies</h3>
+                <ul>
+                    <li>Ministry of Sound</li>
+                    <li>Pacha</li>
+                    <li>The Lightbox</li>
+                    <li>The Scala</li>
+                    <li>The Egg</li>
+                    <li>Wire</li>
+                    <li>The Cross</li>
+                    <li>Secret Garden Party</li>
+                    <li>Glastonbury</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Music Direction Clients</h3>
+                <ul>
+                    <li>Universal Music Group</li>
+                    <li>Good Food Brotherhood</li>
+                    <li>The Mirah Group</li>
+                    <li>Kilo</li>
+                    <li>Roosterfish</li>
+                    <li>DJ Mag</li>
+                    <li>Renaissance Bali</li>
+                    <li>Escapology</li>
+                    <li>Bikini Restaurant</li>
+                    <li>Sisterfields</li>
+                    <li>Karma Kandara</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
     <!-- Supported -->
     <section class="artists-section">
         <div class="section-header">
@@ -1195,47 +1319,169 @@
             <span class="artist-tag">M.A.N.D.Y</span>
             <span class="artist-tag">LAYO & BUSHWAKA</span>
         </div>
-        
-        <div class="venues-section">
-            <p class="venues-label">UK Venues & Festivals</p>
-            <div class="venues-list">
-                <span class="venue-tag">Ministry of Sound</span>
-                <span class="venue-tag">Pacha</span>
-                <span class="venue-tag">Egg London</span>
-                <span class="venue-tag">The Cross</span>
-                <span class="venue-tag">The Scala</span>
-                <span class="venue-tag">The Lightbox</span>
-                <span class="venue-tag">Glastonbury</span>
-                <span class="venue-tag">Secret Garden Party</span>
-            </div>
-            
-            <p class="venues-label">Bali Residencies</p>
-            <div class="venues-list">
-                <span class="venue-tag">Atlas Beach Fest</span>
-                <span class="venue-tag">Old Man's</span>
-                <span class="venue-tag">Cafe del Mar</span>
-                <span class="venue-tag">Deus</span>
-                <span class="venue-tag">Black Sands</span>
-                <span class="venue-tag">40 Thieves</span>
-                <span class="venue-tag">Karma Beach</span>
-                <span class="venue-tag">Finn's Beach Club</span>
-                <span class="venue-tag">La Brisa</span>
-                <span class="venue-tag">Azul</span>
-                <span class="venue-tag">Ulu Cliff House</span>
-                <span class="venue-tag">Da Maria</span>
-                <span class="venue-tag">Mari</span>
-                <span class="venue-tag">Caravan</span>
-                <span class="venue-tag">La Favela</span>
-                <span class="venue-tag">Mamasita</span>
+    </section>
+    
+    <!-- Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <span class="section-tag">Photos</span>
+            <h2 class="section-title">GALLERY</h2>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item"><img src="images/gallery/805667_604192.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/768148_718064.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/68585_50813.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/615134_954036.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/14928_131712.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/259929_855932.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/867557_203410.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/231997_616934.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/666069_493940.jpeg" alt="Gallery" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery/493806_375074.jpeg" alt="Gallery" loading="lazy"></div>
+        </div>
+    </section>
+    
+    <!-- Gigs -->
+    <section class="gallery-section" style="background: var(--gray-dark);">
+        <div class="section-header">
+            <span class="section-tag">Events</span>
+            <h2 class="section-title">GIGS</h2>
+        </div>
+        <div class="gallery-grid" id="gigsGrid">
+            <div class="gallery-item"><img src="images/gigs/420401_683837.jpeg" alt="Gig" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gigs/936380_58101.jpeg" alt="Gig" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gigs/117896_254629.jpeg" alt="Gig" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gigs/426131_49077.jpeg" alt="Gig" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gigs/879152_358162.jpeg" alt="Gig" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gigs/330132_756952.jpeg" alt="Gig" loading="lazy"></div>
+        </div>
+    </section>
+    
+    <!-- Flyers -->
+    <section class="flyers-section" id="flyers">
+        <div class="section-header">
+            <span class="section-tag">Archive</span>
+            <h2 class="section-title">FLYERS</h2>
+        </div>
+        <div class="flyers-gallery" id="flyersGrid">
+            <div class="flyer-item"><img src="images/flyers/123045_785763.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/131447_519110.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/153690_305275.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/155234_7582.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/175910_312411.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/179264_84107.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/18275_934839.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/18495_545029.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/235132_96462.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/245596_445181.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/251984_171013.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/260839_85615.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/300856_355546.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/340472_826076.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/367047_502783.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/38191_353475.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/38524_745447.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/388133_31206.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/392384_464824.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/394750_226034.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/407688_533900.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/4086_176338.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/411172_164472.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/414098_873843.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/424067_126910.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/448621_85448.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/480359_217407.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/508610_43287.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/526992_438706.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/537589_42066.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/552052_969610.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/590029_406161.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/590319_392639.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/60107_375984.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/609414_508487.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/617923_225809.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/634724_323748.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/638616_937078.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/639469_589569.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/700846_169649.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/714542_850785.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/778539_925363.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/785584_527382.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/789766_940579.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/792583_907713.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/818055_42820.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/833280_852833.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/863360_584959.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/880050_683773.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/897714_301177.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/922383_418855.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/93789_506079.jpeg" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/949978_147565.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/988915_351245.png" alt="Flyer" loading="lazy"></div>
+            <div class="flyer-item"><img src="images/flyers/999166_695293.jpeg" alt="Flyer" loading="lazy"></div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <div class="gallery-counter">
+                <span id="flyerCount">55</span>
+                <p>Event Flyers</p>
             </div>
         </div>
     </section>
     
-    <!-- Press -->
-    <section class="press" id="press">
+    <!-- Follow -->
+    <section class="follow-section" id="follow">
         <div class="section-header">
+            <span class="section-tag">Social</span>
+            <h2 class="section-title">FOLLOW</h2>
+        </div>
+        <div class="follow-grid">
+            <a href="https://www.instagram.com/dancook84" target="_blank" class="follow-card">
+                <img src="images/gallery/805667_604192.jpeg" alt="Instagram">
+                <h3>INSTAGRAM</h3>
+                <p>@dancook84</p>
+                <span class="follow-btn">Follow</span>
+            </a>
+            <a href="https://www.facebook.com/djdancook" target="_blank" class="follow-card">
+                <img src="images/gallery/768148_718064.jpeg" alt="Facebook">
+                <h3>FACEBOOK</h3>
+                <p>@djdancook</p>
+                <span class="follow-btn">Follow</span>
+            </a>
+            <a href="https://www.mixcloud.com/djdancook" target="_blank" class="follow-card">
+                <img src="images/gallery/68585_50813.jpeg" alt="Mixcloud">
+                <h3>MIXCLOUD</h3>
+                <p>DJ Dan Cook</p>
+                <span class="follow-btn">Follow</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Press -->
+    <section class="press-section" id="press">
+        <div class="section-header">
+            <span class="section-tag">Media</span>
+            <h2 class="section-title">PRESS</h2>
+        </div>
+        <div class="press-grid">
+            <div class="press-card">
+                <img src="images/flyers/press.jpg" alt="One Coast Magazine">
+                <div class="press-card-content">
+                    <h3>One Coast Magazine</h3>
+                    <span class="year">2015</span>
+                </div>
+            </div>
+            <div class="press-card">
+                <img src="images/gallery/615134_954036.jpeg" alt="Beat Magazine">
+                <div class="press-card-content">
+                    <h3>Beat Magazine</h3>
+                    <span class="year">2020</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header" style="margin-top: 60px;">
             <span class="section-tag">What They Say</span>
-            <h2 class="section-title">PRESS & REVIEWS</h2>
+            <h2 class="section-title">REVIEWS</h2>
         </div>
         <div class="quotes-grid">
             <div class="quote-card">
@@ -1354,7 +1600,7 @@
     </section>
     
     <!-- Contact Bar -->
-    <section class="contact-bar">
+    <section class="contact-bar" id="contact">
         <h2>GET IN TOUCH</h2>
         <div class="contact-info">
             <div class="contact-item">
@@ -1368,10 +1614,16 @@
         </div>
         <div class="social-links">
             <a href="https://soundcloud.com/djdancook" target="_blank" title="SoundCloud">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1zm-.899 1.18c-.048 0-.091.037-.098.091l-.175 1.063.175 1.025c.007.053.05.088.098.088.05 0 .091-.035.099-.088l.196-1.025-.196-1.063c-.008-.054-.05-.091-.099-.091z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1z"/></svg>
             </a>
-            <a href="https://www.instagram.com/djdancook" target="_blank" title="Instagram">
+            <a href="https://www.instagram.com/dancook84" target="_blank" title="Instagram">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/djdancook" target="_blank" title="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.mixcloud.com/djdancook" target="_blank" title="Mixcloud">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.462 8.596c-.078.001-.152.007-.224.02a1.268 1.268 0 0 0-.389.122c-.241.115-.454.304-.602.565-.15.26-.229.593-.21.996.019.403.133.877.374 1.41.241.533.61 1.125 1.137 1.76.527.635 1.212 1.313 2.085 2.014a.628.628 0 0 0 .822-.051l.006-.006.04-.04c.571-.566 1.035-1.11 1.393-1.63.357-.52.61-1.016.762-1.485.152-.469.204-.911.163-1.323a1.92 1.92 0 0 0-.315-.896 1.65 1.65 0 0 0-.607-.532 1.619 1.619 0 0 0-.724-.21h-.002c-.078-.007-.154-.01-.227-.01h-.481z"/></svg>
             </a>
             <a href="https://ra.co/dj/dancook" target="_blank" title="Resident Advisor">
                 <svg viewBox="0 0 24 24" fill="currentColor"><text x="4" y="17" font-size="11" font-weight="bold">RA</text></svg>
@@ -1425,14 +1677,14 @@
             document.getElementById('eventTypeInput').value = el.dataset.type;
         }
         
-        // Lightbox
-        const flyerItems = document.querySelectorAll('.flyer-item');
+        // Lightbox - collect all clickable images
+        const allImages = [...document.querySelectorAll('.gallery-item, .flyer-item')];
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxCounter = document.getElementById('lightbox-counter');
         let currentIndex = 0;
         
-        flyerItems.forEach((item, index) => {
+        allImages.forEach((item, index) => {
             item.addEventListener('click', () => openLightbox(index));
         });
         
@@ -1449,14 +1701,14 @@
         }
         
         function navigateLightbox(dir) {
-            currentIndex = (currentIndex + dir + flyerItems.length) % flyerItems.length;
+            currentIndex = (currentIndex + dir + allImages.length) % allImages.length;
             updateLightbox();
         }
         
         function updateLightbox() {
-            const img = flyerItems[currentIndex].querySelector('img');
+            const img = allImages[currentIndex].querySelector('img');
             lightboxImg.src = img.src;
-            lightboxCounter.textContent = `${currentIndex + 1} / ${flyerItems.length}`;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${allImages.length}`;
         }
         
         lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
@@ -1468,7 +1720,7 @@
         });
         
         // Update flyer count
-        document.getElementById('flyerCount').textContent = flyerItems.length;
+        document.getElementById('flyerCount').textContent = document.querySelectorAll('.flyer-item').length;
         
         // Parallax effect on orbs
         document.addEventListener('mousemove', e => {
